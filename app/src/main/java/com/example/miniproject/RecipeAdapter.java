@@ -1,9 +1,12 @@
 package com.example.miniproject;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
@@ -12,8 +15,8 @@ import java.util.ArrayList;
 
 public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeViewHolder> {
     private ArrayList<Recipe> recipeList;
-    private OnRecipeClickListener onRecipeClickListener;
     private Context context;
+    private OnRecipeClickListener onRecipeClickListener;
 
     public RecipeAdapter(ArrayList<Recipe> recipeList, Context context, OnRecipeClickListener listener) {
         this.recipeList = recipeList;
@@ -30,8 +33,17 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
     @Override
     public void onBindViewHolder(RecipeViewHolder holder, int position) {
         Recipe recipe = recipeList.get(position);
-        holder.nameText.setText(recipe.getName());
-        holder.itemView.setOnClickListener(v -> onRecipeClickListener.onRecipeClick(recipe));
+        holder.recipeName.setText(recipe.getName());
+
+        // Gérer le clic sur le bouton "Afficher détails"
+        holder.btnDetails.setOnClickListener(v -> {
+            Intent intent = new Intent(context, DetailsRecette.class);
+            intent.putExtra("name", recipe.getName());
+            intent.putExtra("ingredients", recipe.getIngredients());
+            intent.putExtra("steps", recipe.getSteps());
+            intent.putExtra("imageUri", recipe.getImageUri()); // Passer l'URI de l'image
+            context.startActivity(intent);
+        });
     }
 
     @Override
@@ -45,11 +57,13 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
     }
 
     public static class RecipeViewHolder extends RecyclerView.ViewHolder {
-        TextView nameText;
+        TextView recipeName;
+        Button btnDetails;
 
         public RecipeViewHolder(View itemView) {
             super(itemView);
-            nameText = itemView.findViewById(R.id.recipeName);
+            recipeName = itemView.findViewById(R.id.recipeName);
+            btnDetails = itemView.findViewById(R.id.bttnDetails);
         }
     }
 

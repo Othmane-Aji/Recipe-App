@@ -4,31 +4,34 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:padding="16dp"
-    android:background="?attr/selectableItemBackground"
-    android:elevation="2dp"
-    android:layout_margin="8dp"
-    android:backgroundTint="@android:color/white"
-    android:clipToPadding="false">
+    android:background="@drawable/item_background"
+    android:layout_marginBottom="8dp">
 
-    <!-- Recipe Name -->
+    <!-- Nom de la recette -->
     <TextView
         android:id="@+id/recipeName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="Nom de la recette"
         android:textSize="18sp"
         android:textStyle="bold"
-        android:textColor="@android:color/black"
-        android:ellipsize="end"
-        android:maxLines="1"
-        android:layout_marginBottom="4dp" />
+        android:layout_marginBottom="8dp" />
 
-    <!-- Recipe Category -->
-    <TextView
-        android:id="@+id/recipeCategory"
+    <!-- Image de la recette -->
+    <ImageView
+        android:id="@+id/recipeImage"
         android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:scaleType="centerCrop"
+        android:layout_marginBottom="8dp"
+        android:src="@drawable/placeholder_image" />
+
+    <!-- Bouton Afficher détails -->
+    <Button
+        android:id="@+id/bttnDetails"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="14sp"
-        android:textColor="@android:color/darker_gray"
-        android:ellipsize="end"
-        android:maxLines="1" />
+        android:text="Afficher détails"
+        android:textColor="@android:color/white"
+        android:backgroundTint="#4CAF50" />
 </LinearLayout>

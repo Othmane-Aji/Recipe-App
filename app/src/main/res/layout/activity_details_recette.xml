@@ -1,80 +1,90 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:padding="16dp"
-    android:background="#f5f5f5"
-    android:gravity="center_horizontal">
+    android:padding="16dp">
 
-    <!-- Titre de la recette -->
-    <TextView
-        android:id="@+id/recipeName"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/recipe_name"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:textColor="#333333"
-        android:gravity="center"
-        android:layout_marginBottom="16dp" />
+        android:orientation="vertical">
 
-    <!-- CardView pour afficher les ingrédients -->
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardIngredients"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:elevation="4dp"
-        android:layout_marginBottom="16dp"
-        app:cardCornerRadius="8dp">
+        <!-- ImageView pour afficher l'image de la recette -->
+        <ImageView
+            android:id="@+id/recipeImageView"
+            android:layout_width="match_parent"
+            android:layout_height="226dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/image_border"
+            android:scaleType="centerCrop" />
 
+        <!-- Nom de la recette -->
         <TextView
-            android:id="@+id/ingredients"
+            android:id="@+id/recipeName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="16dp"
-            android:text="@string/ingredients"
-            android:textColor="#555555"
-            android:textSize="18sp" />
-    </androidx.cardview.widget.CardView>
+            android:text="Nom de la recette"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="16dp" />
 
-    <!-- CardView pour afficher les étapes -->
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardSteps"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:elevation="4dp"
-        android:layout_marginBottom="16dp"
-        app:cardCornerRadius="8dp">
-
+        <!-- Ingrédients -->
         <TextView
-            android:id="@+id/steps"
+            android:id="@+id/ingredientsLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="16dp"
-            android:text="@string/steps"
-            android:textColor="#555555"
-            android:textSize="18sp" />
-    </androidx.cardview.widget.CardView>
+            android:text="Ingrédients"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp" />
 
-    <!-- Button pour supprimer la recette -->
-    <Button
-        android:id="@+id/btnDelete"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:backgroundTint="#FF5252"
-        android:text="@string/delete_recipe"
-        android:textColor="#FFFFFF"
-        android:layout_marginBottom="8dp"/>
+        <TextView
+            android:id="@+id/recipeIngredients"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginBottom="16dp"
+            android:text="Liste des ingrédients" />
 
-    <!-- Button pour éditer la recette -->
-    <Button
-        android:id="@+id/btnEdit"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:backgroundTint="#4CAF50"
-        android:text="@string/edit_recipe"
-        android:textColor="#FFFFFF" />
+        <!-- Étapes de préparation -->
+        <TextView
+            android:id="@+id/stepsLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Étapes de préparation"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp" />
 
-</LinearLayout>
+        <TextView
+            android:id="@+id/recipeSteps"
+            android:layout_width="match_parent"
+            android:layout_height="49dp"
+            android:layout_marginBottom="16dp"
+            android:text="Description des étapes" />
+
+        <!-- Boutons Modifier et Supprimer -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="81dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnEdit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:backgroundTint="#4CAF50"
+                android:text="Modifier"
+                android:textColor="@android:color/white" />
+
+            <Button
+                android:id="@+id/btnDelete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#FF5252"
+                android:text="Supprimer"
+                android:textColor="@android:color/white" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

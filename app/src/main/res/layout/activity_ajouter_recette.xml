@@ -1,64 +1,112 @@
-<LinearLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:padding="16dp"
     android:background="@drawable/burgir">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- ImageView pour afficher l'image sélectionnée -->
+        <ImageView
+            android:id="@+id/recipeImage"
+            android:layout_width="match_parent"
+            android:layout_height="166dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/image_border"
+            android:scaleType="centerCrop" />
+
+        <!-- Bouton pour sélectionner une image -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnPickImage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="#47B3BD"
+            android:text="Sélectionner une image"
+            android:textColor="@android:color/white"
+            android:textStyle="bold" />
+
+        <!-- Champ pour le nom de la recette -->
         <EditText
             android:id="@+id/editRecipeName"
             android:layout_width="match_parent"
-            android:layout_height="92dp"
-            android:hint="Nom de la recette" />
+            android:layout_height="wrap_content"
+            android:hint="Nom de la recette"
+            android:backgroundTint="@color/design_default_color_primary_variant"
+            android:padding="12dp"
+            android:layout_marginBottom="16dp" />
 
+        <!-- Champ pour les ingrédients -->
         <EditText
             android:id="@+id/editIngredients"
             android:layout_width="match_parent"
             android:layout_height="94dp"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="@color/design_default_color_primary_variant"
             android:hint="Ingrédients (séparés par des lignes)"
-            android:inputType="textMultiLine" />
+            android:inputType="textMultiLine"
+            android:minHeight="120dp"
+            android:padding="12dp" />
 
+        <!-- Champ pour les étapes de préparation -->
         <EditText
             android:id="@+id/editSteps"
             android:layout_width="match_parent"
-            android:layout_height="105dp"
+            android:layout_height="93dp"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="@color/design_default_color_primary_variant"
             android:hint="Étapes de préparation"
-            android:inputType="textMultiLine" />
+            android:inputType="textMultiLine"
+            android:minHeight="140dp"
+            android:padding="12dp" />
 
+        <!-- Groupe de boutons radio pour la catégorie -->
         <RadioGroup
             android:id="@+id/radioGroupCategory"
             android:layout_width="match_parent"
-            android:layout_height="66dp"
-            android:layout_marginBottom="16dp"
-            android:orientation="horizontal">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="16dp">
 
             <RadioButton
                 android:id="@+id/radioEntrée"
-                android:layout_width="117dp"
-                android:layout_height="66dp"
-                android:text="Entrée" />
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Entrée"
+                android:buttonTint="#47B3BD" />
 
             <RadioButton
                 android:id="@+id/radioPlatPrincipal"
-                android:layout_width="149dp"
-                android:layout_height="66dp"
-                android:text="Plat principal" />
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Plat principal"
+                android:buttonTint="#47B3BD" />
 
             <RadioButton
                 android:id="@+id/radioDessert"
-                android:layout_width="182dp"
-                android:layout_height="match_parent"
-                android:text="Dessert" />
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Dessert"
+                android:buttonTint="#47B3BD" />
         </RadioGroup>
 
+        <!-- Bouton pour sauvegarder la recette -->
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnSave"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:backgroundTint="#47B3BD"
-            android:text="Sauvegarder" />
+            android:backgroundTint="#4CAF50"
+            android:text="Sauvegarder"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:layout_marginTop="16dp" />
 
     </LinearLayout>
-
+</ScrollView>

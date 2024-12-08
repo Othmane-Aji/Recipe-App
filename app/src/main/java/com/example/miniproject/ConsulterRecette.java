@@ -45,6 +45,7 @@ public class ConsulterRecette extends AppCompatActivity {
                 intent.putExtra("name", recipe.getName());
                 intent.putExtra("ingredients", recipe.getIngredients());
                 intent.putExtra("steps", recipe.getSteps());
+                intent.putExtra("imageUri", recipe.getImageUri()); // Inclure l'image URI
                 startActivity(intent);  // Lancer l'activité de détail
             }
         });
@@ -72,36 +73,38 @@ public class ConsulterRecette extends AppCompatActivity {
 
     private void loadRecipes() {
         Map<String, ?> allEntries = sharedPreferences.getAll();
-        recipeList.clear();
+        recipeList.clear();  // Effacer les recettes précédentes
 
         if (allEntries.isEmpty()) {
             Toast.makeText(this, "Aucune recette trouvée.", Toast.LENGTH_SHORT).show();
             return;
         }
 
+        boolean validDataFound = false;
+
         for (Map.Entry<String, ?> entry : allEntries.entrySet()) {
             String recipeName = entry.getKey();
             String recipeData = entry.getValue().toString();
-
-            Log.d("SharedPreferences", "Key: " + recipeName + " - Value: " + recipeData);
-
-            // Vérification et extraction des données
             String[] data = recipeData.split("\\|\\|");
 
-            if (data.length == 3) {
-                String category = data[0];
-                String ingredients = data[1];
-                String steps = data[2];
-                recipeList.add(new Recipe(recipeName, category, ingredients, steps));
+            // Vérification des données : les données doivent contenir 3 parties (si pas d'image)
+            if (data.length >= 3) {
+                String ingredients = data[0];
+                String steps = data[1];
+                // Si l'image URI n'est pas présente, on utilise une valeur par défaut (chaîne vide)
+                String imageUri = data.length == 3 ? "" : data[2]; // Si l'array contient 3 éléments, l'image est vide.
+
+                recipeList.add(new Recipe(recipeName, "", ingredients, steps, imageUri));
+                validDataFound = true;
             } else {
-                Log.e("SharedPreferences", "Données mal formatées pour la recette : " + recipeName);
-                SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.remove(recipeName);  // Supprime les données invalides
-                editor.apply();
+                // Log des recettes mal formatées
+                Log.e("ConsulterRecette", "Données mal formatées pour la recette : " + recipeName);
             }
         }
 
-        Log.d("ConsulterRecette", "Nombre de recettes chargées : " + recipeList.size());
+        if (!validDataFound) {
+            Toast.makeText(this, "Aucune recette valide trouvée.", Toast.LENGTH_SHORT).show();
+        }
 
         adapter.notifyDataSetChanged();
     }
@@ -109,6 +112,7 @@ public class ConsulterRecette extends AppCompatActivity {
     private void filterRecipes(String query) {
         ArrayList<Recipe> filteredList = new ArrayList<>();
         for (Recipe recipe : recipeList) {
+            // Filtrer par nom, ingrédients ou catégorie (si ces informations sont présentes)
             if (recipe.getName().toLowerCase().contains(query.toLowerCase())
                     || recipe.getIngredients().toLowerCase().contains(query.toLowerCase())
                     || recipe.getCategory().toLowerCase().contains(query.toLowerCase())) {
@@ -116,6 +120,7 @@ public class ConsulterRecette extends AppCompatActivity {
             }
         }
 
+        // Mettre à jour l'adaptateur avec les recettes filtrées
         adapter.updateList(filteredList);
     }
 }
