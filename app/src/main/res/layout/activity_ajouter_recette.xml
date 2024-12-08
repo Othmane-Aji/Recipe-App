@@ -1,0 +1,64 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@drawable/burgir">
+
+        <EditText
+            android:id="@+id/editRecipeName"
+            android:layout_width="match_parent"
+            android:layout_height="92dp"
+            android:hint="Nom de la recette" />
+
+        <EditText
+            android:id="@+id/editIngredients"
+            android:layout_width="match_parent"
+            android:layout_height="94dp"
+            android:hint="Ingrédients (séparés par des lignes)"
+            android:inputType="textMultiLine" />
+
+        <EditText
+            android:id="@+id/editSteps"
+            android:layout_width="match_parent"
+            android:layout_height="105dp"
+            android:hint="Étapes de préparation"
+            android:inputType="textMultiLine" />
+
+        <RadioGroup
+            android:id="@+id/radioGroupCategory"
+            android:layout_width="match_parent"
+            android:layout_height="66dp"
+            android:layout_marginBottom="16dp"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/radioEntrée"
+                android:layout_width="117dp"
+                android:layout_height="66dp"
+                android:text="Entrée" />
+
+            <RadioButton
+                android:id="@+id/radioPlatPrincipal"
+                android:layout_width="149dp"
+                android:layout_height="66dp"
+                android:text="Plat principal" />
+
+            <RadioButton
+                android:id="@+id/radioDessert"
+                android:layout_width="182dp"
+                android:layout_height="match_parent"
+                android:text="Dessert" />
+        </RadioGroup>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnSave"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="#47B3BD"
+            android:text="Sauvegarder" />
+
+    </LinearLayout>
+

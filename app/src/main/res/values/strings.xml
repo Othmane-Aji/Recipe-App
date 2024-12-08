@@ -1,0 +1,7 @@
+<resources>
+    <string name="recipe_name">Nom de la recette</string>
+    <string name="ingredients">Ingrédients</string>
+    <string name="steps">Étapes</string>
+    <string name="delete_recipe">Supprimer la recette</string>
+    <string name="edit_recipe">Modifier la recette</string>
+</resources>

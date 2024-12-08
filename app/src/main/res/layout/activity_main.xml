@@ -1,0 +1,64 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="16dp"
+    android:background="#F8F9FA">
+
+    <!-- Logo -->
+    <ImageView
+        android:id="@+id/logoImage"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:src="@drawable/logo"
+        android:contentDescription="Logo de l'application"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Descriptive Text -->
+    <TextView
+        android:id="@+id/appDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bienvenue sur notre application de recettes ! Découvrez, ajoutez et partagez vos meilleures idées culinaires."
+        android:textSize="16sp"
+        android:textColor="@android:color/darker_gray"
+        android:gravity="center"
+        android:padding="8dp"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Welcome Message -->
+    <TextView
+        android:id="@+id/welcomeMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Découvrez vos nouvelles recettes favorites !"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:textColor="@android:color/black"
+        android:layout_marginBottom="24dp" />
+
+    <!-- Button to Add a Recipe -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnAddRecipe"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="#47B3BD"
+        android:text="Ajouter une recette"
+        android:textColor="@android:color/white"
+        android:elevation="4dp" />
+
+    <!-- Button to View Existing Recipes -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnViewRecipes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="#47B3BD"
+        android:text="Consulter les recettes"
+        android:textColor="@android:color/white"
+        android:elevation="4dp" />
+</LinearLayout>

@@ -1,0 +1,75 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="#F8F9FA">
+
+    <!-- Title -->
+
+    <!-- Edit Recipe Name -->
+    <TextView
+        android:layout_gravity="center"
+        android:id="@+id/titleEditRecipe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:text="Modifier la recette"
+        android:textColor="#333333"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/editRecipeName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nom de la recette"
+        android:textSize="16sp"
+        android:background="@drawable/edittext_background"
+        android:padding="12dp"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Edit Ingredients -->
+    <EditText
+        android:id="@+id/editIngredients"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Ingrédients (séparés par des lignes)"
+        android:inputType="textMultiLine"
+        android:background="@drawable/edittext_background"
+        android:padding="12dp"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Edit Steps -->
+    <EditText
+        android:id="@+id/editSteps"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Étapes de préparation"
+        android:inputType="textMultiLine"
+        android:background="@drawable/edittext_background"
+        android:padding="12dp"
+        android:layout_marginBottom="24dp" />
+
+    <!-- Save Button -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnSave"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Sauvegarder"
+        android:backgroundTint="#4CAF50"
+        android:textColor="@android:color/white"
+        android:elevation="4dp"
+        android:layout_marginBottom="12dp" />
+
+    <!-- Cancel Button -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnCancel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Annuler"
+        android:backgroundTint="#F44336"
+        android:textColor="@android:color/white"
+        android:elevation="4dp" />
+</LinearLayout>
