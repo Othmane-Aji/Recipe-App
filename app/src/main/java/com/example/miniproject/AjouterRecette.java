@@ -52,7 +52,7 @@ public class AjouterRecette extends AppCompatActivity {
         // Ouvrir la galerie pour choisir une image
         btnPickImage.setOnClickListener(v -> openImagePicker());
 
-        // Sauvegarder la recette avec les informations et l'image sélectionnée
+
         btnSave.setOnClickListener(v -> saveRecipe());
     }
 

@@ -28,35 +28,30 @@ public class ConsulterRecette extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_consulter_recette);
 
-        // Initialisation des vues
+
         recyclerView = findViewById(R.id.recyclerView);
         searchInput = findViewById(R.id.searchInput);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        // Initialisation des SharedPreferences
         sharedPreferences = getSharedPreferences("RecipeApp", MODE_PRIVATE);
 
-        // Créer l'adaptateur avec un OnRecipeClickListener
         adapter = new RecipeAdapter(recipeList, this, new RecipeAdapter.OnRecipeClickListener() {
             @Override
             public void onRecipeClick(Recipe recipe) {
-                // Créez un Intent pour passer les données de la recette à l'écran des détails
+
                 Intent intent = new Intent(ConsulterRecette.this, DetailsRecette.class);
                 intent.putExtra("name", recipe.getName());
                 intent.putExtra("ingredients", recipe.getIngredients());
                 intent.putExtra("steps", recipe.getSteps());
-                intent.putExtra("imageUri", recipe.getImageUri()); // Inclure l'image URI
-                startActivity(intent);  // Lancer l'activité de détail
+                intent.putExtra("imageUri", recipe.getImageUri());
+                startActivity(intent);
             }
         });
 
-        // Attacher l'adaptateur au RecyclerView
         recyclerView.setAdapter(adapter);
 
-        // Charger les recettes sauvegardées
         loadRecipes();
 
-        // Recherche en temps réel
         searchInput.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
@@ -73,7 +68,7 @@ public class ConsulterRecette extends AppCompatActivity {
 
     private void loadRecipes() {
         Map<String, ?> allEntries = sharedPreferences.getAll();
-        recipeList.clear();  // Effacer les recettes précédentes
+        recipeList.clear();
 
         if (allEntries.isEmpty()) {
             Toast.makeText(this, "Aucune recette trouvée.", Toast.LENGTH_SHORT).show();
@@ -87,17 +82,18 @@ public class ConsulterRecette extends AppCompatActivity {
             String recipeData = entry.getValue().toString();
             String[] data = recipeData.split("\\|\\|");
 
-            // Vérification des données : les données doivent contenir 3 parties (si pas d'image)
+
             if (data.length >= 3) {
                 String ingredients = data[0];
                 String steps = data[1];
-                // Si l'image URI n'est pas présente, on utilise une valeur par défaut (chaîne vide)
-                String imageUri = data.length == 3 ? "" : data[2]; // Si l'array contient 3 éléments, l'image est vide.
-
+                String imageUri = data.length == 3 ? "" : data[2];
                 recipeList.add(new Recipe(recipeName, "", ingredients, steps, imageUri));
+
+
+
                 validDataFound = true;
             } else {
-                // Log des recettes mal formatées
+
                 Log.e("ConsulterRecette", "Données mal formatées pour la recette : " + recipeName);
             }
         }
@@ -120,7 +116,7 @@ public class ConsulterRecette extends AppCompatActivity {
             }
         }
 
-        // Mettre à jour l'adaptateur avec les recettes filtrées
+
         adapter.updateList(filteredList);
     }
 }

@@ -35,13 +35,13 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
         Recipe recipe = recipeList.get(position);
         holder.recipeName.setText(recipe.getName());
 
-        // Gérer le clic sur le bouton "Afficher détails"
+
         holder.btnDetails.setOnClickListener(v -> {
             Intent intent = new Intent(context, DetailsRecette.class);
             intent.putExtra("name", recipe.getName());
             intent.putExtra("ingredients", recipe.getIngredients());
             intent.putExtra("steps", recipe.getSteps());
-            intent.putExtra("imageUri", recipe.getImageUri()); // Passer l'URI de l'image
+            intent.putExtra("imageUri", recipe.getImageUri());
             context.startActivity(intent);
         });
     }

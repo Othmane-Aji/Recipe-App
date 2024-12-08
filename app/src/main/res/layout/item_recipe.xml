@@ -18,13 +18,6 @@
         android:layout_marginBottom="8dp" />
 
     <!-- Image de la recette -->
-    <ImageView
-        android:id="@+id/recipeImage"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:scaleType="centerCrop"
-        android:layout_marginBottom="8dp"
-        android:src="@drawable/placeholder_image" />
 
     <!-- Bouton Afficher détails -->
     <Button

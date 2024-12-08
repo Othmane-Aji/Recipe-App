@@ -35,10 +35,10 @@
             android:id="@+id/editRecipeName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="@color/blue"
             android:hint="Nom de la recette"
-            android:backgroundTint="@color/design_default_color_primary_variant"
-            android:padding="12dp"
-            android:layout_marginBottom="16dp" />
+            android:padding="12dp" />
 
         <!-- Champ pour les ingrédients -->
         <EditText
@@ -46,7 +46,7 @@
             android:layout_width="match_parent"
             android:layout_height="94dp"
             android:layout_marginBottom="16dp"
-            android:backgroundTint="@color/design_default_color_primary_variant"
+            android:backgroundTint="@color/blue"
             android:hint="Ingrédients (séparés par des lignes)"
             android:inputType="textMultiLine"
             android:minHeight="120dp"
@@ -58,7 +58,7 @@
             android:layout_width="match_parent"
             android:layout_height="93dp"
             android:layout_marginBottom="16dp"
-            android:backgroundTint="@color/design_default_color_primary_variant"
+            android:backgroundTint="@color/blue"
             android:hint="Étapes de préparation"
             android:inputType="textMultiLine"
             android:minHeight="140dp"

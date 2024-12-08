@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         // Message de bienvenue
         welcomeMessage.setText("Découvrez vos nouvelles recettes favorites !");
 
-        // Boutons pour naviguer entre les activités
+
         btnAddRecipe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

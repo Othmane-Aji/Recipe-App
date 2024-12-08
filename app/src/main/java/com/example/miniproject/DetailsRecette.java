@@ -55,18 +55,17 @@ public class DetailsRecette extends AppCompatActivity {
             recipeImageView.setImageResource(R.drawable.placeholder_image); // Image par défaut
         }
 
-        // Gérer le clic sur le bouton "Modifier"
         btnEdit.setOnClickListener(v -> {
-            // Naviguer vers l'écran de modification
+
             Intent editIntent = new Intent(DetailsRecette.this, AjouterRecette.class);
             editIntent.putExtra("name", recipeName);
             editIntent.putExtra("ingredients", ingredients);
             editIntent.putExtra("steps", steps);
-            editIntent.putExtra("imageUri", imageUri); // Passer l'URI de l'image
-            startActivity(editIntent);  // Lancer l'activité de modification
+            editIntent.putExtra("imageUri", imageUri);
+            startActivity(editIntent);
         });
 
-        // Gérer le clic sur le bouton "Supprimer"
+
         btnDelete.setOnClickListener(v -> {
             deleteRecipe(recipeName);
         });
@@ -74,9 +73,9 @@ public class DetailsRecette extends AppCompatActivity {
 
     private void deleteRecipe(String recipeName) {
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.remove(recipeName);  // Supprimer la recette
+        editor.remove(recipeName);
         editor.apply();
         Toast.makeText(this, "Recette supprimée avec succès", Toast.LENGTH_SHORT).show();
-        finish();  // Retour à l'écran précédent
+        finish();
     }
 }
